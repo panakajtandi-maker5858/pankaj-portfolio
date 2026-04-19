@@ -1,0 +1,159 @@
+/* Projects Section */
+#projects {
+  max-width: 1100px;
+}
+
+/* 3 cards grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Single Card */
+.project-card {
+  background: var(--card-bg, var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s,
+              border-color 0.3s;
+}
+
+/* Subtle accent glow on hover */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--accent-dim);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 0 40px rgba(0, 229, 192, 0.08);
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* Content sits above the glow */
+.project-card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Project number */
+.project-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+/* Project title */
+.project-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+  color: var(--text);
+}
+
+/* Project description */
+.project-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+}
+
+/* Stack tags row */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.4rem;
+}
+
+.stack-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: var(--surface2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+}
+
+/* Live + GitHub links */
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.project-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s;
+}
+
+.project-link:hover {
+  border-color: var(--accent);
+}
+
+/* Coming Soon badge — glowing */
+.wip-badge {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  background: var(--accent-dim);
+  color: var(--accent);
+  padding: 0.25rem 0.7rem;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+  letter-spacing: 0.06em;
+  animation: badgeGlow 2s ease-in-out infinite;
+}
+
+@keyframes badgeGlow {
+  0%, 100% { box-shadow: 0 0 4px rgba(0, 229, 192, 0.2); }
+  50% { box-shadow: 0 0 14px rgba(0, 229, 192, 0.5); }
+}
+
+/* See all on GitHub link */
+.projects-footer {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+.projects-footer a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.projects-footer a:hover {
+  color: var(--accent);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}

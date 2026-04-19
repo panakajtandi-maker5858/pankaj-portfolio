@@ -1,0 +1,113 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #080810;
+  --surface: #0f0f1a;
+  --surface2: #141424;
+  --text: #e8e8f0;
+  --text-muted: #6b6b80;
+  --accent: #00e5c0;
+  --accent-dim: rgba(0, 229, 192, 0.12);
+  --border: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="light"] {
+  --bg: #f4f4f0;
+  --surface: #ffffff;
+  --surface2: #efefeb;
+  --text: #111118;
+  --text-muted: #6b7280;
+  --accent: #008f77;
+  --accent-dim: rgba(0, 143, 119, 0.10);
+  --border: rgba(0, 0, 0, 0.08);
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  transition: background 0.4s ease, color 0.3s ease;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.out-view {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+/* Section Common Styles */
+section {
+  padding: clamp(5rem, 10vw, 8rem) clamp(1.2rem, 5vw, 4rem);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.section-num {
+  color: var(--accent);
+  margin-right: 0.5rem;
+  font-size: 0.85em;
+}
+
+.section-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 3.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
