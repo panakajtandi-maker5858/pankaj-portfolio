@@ -111,3 +111,22 @@ section {
   }
 }
 
+
+
+/* Desktop — cursor dikhao */
+#cursor-dot,
+#cursor-ring {
+  display: block;
+}
+
+/* Mobile — cursor chhupao */
+@media (max-width: 768px) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none !important;
+  }
+
+  html, body {
+    cursor: auto !important;
+  }
+}
